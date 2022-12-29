@@ -1,0 +1,7 @@
+POST  http://localhost:3000/api/save-data
+Content-Type: application/json
+
+{
+    "image_id":"",
+    "content_id":1
+}
