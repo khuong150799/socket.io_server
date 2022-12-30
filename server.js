@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 const io = new Server(server, {
     cors: {
-      origin: '*',
+      origin: true,
       methods: ['GET', 'POST'],
     },
   });
