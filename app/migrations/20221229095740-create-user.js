@@ -9,11 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      image_id: {
-        type: Sequelize.INTEGER
+      user: {
+        type: Sequelize.STRING
       },
-      content_id: {
-        type: Sequelize.INTEGER
+      content: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
