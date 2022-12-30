@@ -3,11 +3,11 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const cors = require('cors')
+const saveDataService = require('./app/service/saveDataService')
 
 // const { Server } = require("socket.io");
 
 const { Server } = require("socket.io");
-// const io = new Server(server);
 
 
 const bodyParser = require('body-parser');
@@ -22,18 +22,12 @@ const io = new Server(server, {
       methods: ['GET', 'POST'],
     },
   });
+global.__io = io
+// app.get('/', (req, res) => {
+//   res.send('<h1>Hello world</h1>');
+// });
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>');
-});
-
-io.on("connection", (socket) => {
-    console.log('user connect');
-    socket.on("hello", (data) => {
-        io.emit("hello",data);
-      console.log(data); // world
-    });
-  });
+__io.on("connection", saveDataService.saveData);
 
 require('./app/routes/saveData.route')(app)
 server.listen(3000, () => {
